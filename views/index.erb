@@ -1,0 +1,7 @@
+<h1>メモアプリ</h1>
+<ul>
+  <% @memo.sort.each do |txt| %>
+  <li><a href="/show/<%= "#{txt}" %>"><%= txt %></a></li>
+  <% end %>
+</ul>
+<a href="/create"><input type="button" value="追加"></a>

@@ -1,0 +1,19 @@
+<h1>メモアプリ</h1>
+
+<% File.open("#{@txt_name}", "r") do |f| %>
+  <% @memo_date = f.read.split(",") %>
+<% end %>
+
+<p><%= @memo_date[0] %></p>
+<p><%= @memo_date[1] %></p>
+
+<form action="/edit/<%= "#{@txt_name}" %>" method="get">
+  <input type="submit" value="変更">
+</form>
+<p></p>
+<form action="/show/<%= "#{@txt_name}" %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="削除">
+</form>
+
+

@@ -1,0 +1,11 @@
+<h1>メモアプリ</h1>
+
+<form action="/edit/<%= "#{@txt_name}" %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <p></p>
+  <input type="text" name="edit_title" value="<%= "#{@memo_date[0]}" %>">
+  <p></p>
+  <input type="text" name="edit_content" value="<%= "#{@memo_date[1]}" %>">
+  <p></p>
+  <button type="submit">変更</button>
+</form>
