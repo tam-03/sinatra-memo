@@ -29,17 +29,17 @@ post '/create' do
     erb :save
 end
 
-get '/show/:txt_name' do |t|
+get '/show-:txt_name' do |t|
     @txt_name = t
   erb :show
 end
 
-delete '/show/:txt_name' do |t|
+delete '/show-:txt_name' do |t|
   File.delete("#{t}")
   redirect to('/')
 end
 
-get '/edit/:txt_name' do |t|
+get '/edit-:txt_name' do |t|
   @txt_name = t
     File.open("#{t}", "r") do |f|
         @memo_date = f.read.split(",")
@@ -47,7 +47,7 @@ get '/edit/:txt_name' do |t|
   erb :edit
 end
 
-patch '/edit/:txt_name' do |t|
+patch '/edit-:txt_name' do |t|
   @txt_name = t
   File.open("#{@txt_name}", "w") do |f|
     f.puts("#{params[:edit_title]},#{params[:edit_content]}")
