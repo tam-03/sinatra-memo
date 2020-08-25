@@ -17,7 +17,7 @@ get '/' do
 end
 
 get '/create' do
-    erb :create
+  erb :create
 end
 
 post '/create' do

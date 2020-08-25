@@ -1,6 +1,8 @@
 <h1>保存しました</h1>
-<p><%= @memo_title %></p>
-<p><%= @memo_content %></p>
+<h2>タイトル</h2>
+<p class="title_view"><%= @memo_title %></p>
+<h2>本文</h2>
+<p class="content_view" style="font-size: 1em; margin-bottom: 20px;"><%= @memo_content %></p>
 <form action="/" method="get">
-  <input type="submit" value="戻る">
+  <input class="btn-flat-border" type="submit" value="戻る">
 </form>

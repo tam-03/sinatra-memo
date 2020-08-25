@@ -1,7 +1,9 @@
 <h1>メモアプリ</h1>
-<ul>
-  <% @memo.sort.each do |txt| %>
-  <li><a href="/show-<%= "#{txt}" %>"><%= txt.delete(".txt") %></a></li>
-  <% end %>
-</ul>
-<a href="/create"><input type="button" value="追加"></a>
+<div class="top">
+  <ul style="padding: 0px;">
+    <% @memo.sort.each do |txt| %>
+    <li class="memo_titles"><a href="/show-<%= "#{txt}" %>"><%= Rack::Utils.escape_html(txt.gsub(/\.txt/, "")) %></a></li>
+    <% end %>
+  </ul>
+  <a href="/create" class="btn-flat-border">メモを追加</a>
+</div>
