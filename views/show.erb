@@ -1,5 +1,3 @@
-<h1>メモアプリ</h1>
-
 <% File.open("#{@txt_name}", "r") do |f| %>
   <% @memo_date = f.read.split(",") %>
 <% end %>

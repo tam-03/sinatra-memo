@@ -3,7 +3,6 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require 'fileutils'
-
 enable :method_override
 
 before do
@@ -11,7 +10,6 @@ before do
 end
 
 get '/' do
-  @title = "My Memo"
   erb :index
 end
 
