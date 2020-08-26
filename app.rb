@@ -12,7 +12,6 @@ end
 
 get '/' do
   @title = "My Memo"
-  @app_name = "メモアプリ"
   erb :index
 end
 
