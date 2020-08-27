@@ -1,64 +1,64 @@
 body {
     font-size: 16px;
     font-family: Verdana, sans-serif;
-}
-
-.container {
+  }
+  
+  .container {
     width: 500px;
     margin: 20px auto;
-}
-
-h1 {
+  }
+  
+  h1 {
     font-size: 1.5em;
     border-bottom: 1px solid #ddd;
     padding-bottom: 10px;
     margin-bottom: 10px;
     color: #333;
-}
-
-h2 {
+  }
+  
+  h2 {
     font-size: 1em;
     padding-bottom: 10px;
     color: #222;
-}
-
-.top {
+  }
+  
+  .top {
     display: flex;
     flex-direction: column;
-}
-
-input[type="text"] {
-    border:0;
-    padding:10px;
-    font-size:1.3em;
-    font-family:Arial, sans-serif;
+  }
+  
+  input[type="text"] {
+    border: 0;
+    padding: 10px;
+    font-size: 1.3em;
+    font-family: Arial, sans-serif;
     color: #555;
-    border:solid 1px #ccc;
-    margin:0 0 20px;
-    width:300px;
-}
-
-.memo_content {
+    border: solid 1px #ccc;
+    margin: 0 0 20px;
+    width: 300px;
+  }
+  
+  .memo_content {
     border: solid 1px #ccc;
     margin: 0 0 20px;
     color: #555;
-    font-size:1em;
-}
-
-a.btn-flat-border, li a {
+    font-size: 1em;
+  }
+  
+  a.btn-flat-border, li a {
     display: inline-block;
     text-decoration: none;
     text-align: center;
-}
-
-.memo_titles {
+  }
+  
+  .memo_titles {
     margin-bottom: 20px;
     padding: 5px;
     list-style: none;
     border-bottom: 1px solid;
-}
-
-.btn-flat-border {
+  }
+  
+  .btn-flat-border {
     display: inline-block;
     padding: 0.3em 5em;
     text-decoration: none;
@@ -67,19 +67,20 @@ a.btn-flat-border, li a {
     border-radius: 3px;
     transition: .4s;
     margin: 0 0 20px;
-}
-
-.btn-flat-border:hover {
-  background: #67c5ff;
-  color: white;
-}
-
-.title_view {
+  }
+  
+  .btn-flat-border:hover {
+    background: #67c5ff;
+    color: white;
+  }
+  
+  .title_view {
     font-size: 1.5em;
     margin-bottom: 20px;
-}
-
-.content_view {
+  }
+  
+  .content_view {
     font-size: 1em;
     margin-bottom: 20px;
-}
+  }
+  
