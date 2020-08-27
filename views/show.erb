@@ -2,9 +2,13 @@
   <% @memo_date = f.read.split(",") %>
 <% end %>
 <h2>タイトル</h2>
-<p class="title_view"><%= @memo_date[0] %></p>
+<p class="title_view">
+  <%= @memo_date[0] %>
+</p>
 <h2>本文</h2>
-<p class="content_view"><%= @memo_date[1] %></p>
+<p class="content_view">
+  <%= @memo_date[1] %>
+</p>
 
 <form action="/edit-<%= "#{@txt_name}" %>" method="get">
   <input class="btn-flat-border" type="submit" value="変更">
@@ -14,5 +18,3 @@
   <input type="hidden" name="_method" value="delete">
   <input class="btn-flat-border" type="submit" value="削除">
 </form>
-
-
