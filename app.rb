@@ -33,8 +33,8 @@ end
 
 get '/memo/:txt_name' do |t|
   @txt_name = t
-  File.open("#{@txt_name}", "r") do |f|
-    @memo_date = f.read.split(",")
+  File.open(@txt_name.to_s, 'r') do |f|
+    @memo_date = f.read.split(',')
   end
   erb :show
 end
@@ -46,7 +46,7 @@ end
 
 get '/memo/custom/:txt_name' do |t|
   @txt_name = t
-  File.open("#{@txt_name}", "r") do |f|
+  File.open(@txt_name.to_s, 'r') do |f|
     @memo_date = f.read.split(',')
   end
   erb :edit
