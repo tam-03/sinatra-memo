@@ -2,11 +2,11 @@
   <ul style="padding: 0px;">
     <% @memo.sort.each do |txt| %>
       <li class="memo_titles">
-        <a href="/show-<%= txt %>">
+        <a href="/memo/<%= "#{txt}" %>">
           <%= Rack::Utils.escape_html(txt.gsub(/\.txt/, "")) %>
         </a>
       </li>
       <% end %>
   </ul>
-  <a href="/create" class="btn-flat-border">メモを追加</a>
+  <a href="/memo/new" class="btn-flat-border">メモを追加</a>
 </div>

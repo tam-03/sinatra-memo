@@ -1,6 +1,3 @@
-<% File.open("#{@txt_name}", "r") do |f| %>
-  <% @memo_date = f.read.split(",") %>
-<% end %>
 <h2>タイトル</h2>
 <p class="title_view">
   <%= @memo_date[0] %>
@@ -10,11 +7,11 @@
   <%= @memo_date[1] %>
 </p>
 
-<form action="/edit-<%= "#{@txt_name}" %>" method="get">
+<form action="/memo/custom/<%= "#{@txt_name}" %>" method="get">
   <input class="btn-flat-border" type="submit" value="変更">
 </form>
 <p></p>
-<form action="/show-<%= "#{@txt_name}" %>" method="post">
+<form action="/memo/<%= "#{@txt_name}" %>" method="post">
   <input type="hidden" name="_method" value="delete">
   <input class="btn-flat-border" type="submit" value="削除">
 </form>

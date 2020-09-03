@@ -9,21 +9,21 @@ before do
   @memo = Dir.glob('*').grep(/.txt/).map { |t| t }
 end
 
-get '/' do
+get '/memo' do
   erb :index
 end
 
-get '/create' do
+get '/memo/new' do
   erb :create
 end
 
-post '/create' do
+post '/memo/new' do
   @memo_title = params[:memo_title]
   @memo_content = params[:memo_content]
   @memo.map do |f|
     txt_name = f.gsub(/\.txt/, "")
     if txt_name == @memo_title
-      redirect to('/create')
+      redirect to('/memo/new')
     else
       File.open("#{@memo_title}.txt", 'w') do |f|
         f.puts("#{@memo_title},#{@memo_content}")
@@ -33,29 +33,32 @@ post '/create' do
   erb :save
 end
 
-get '/show-:txt_name' do |t|
+get '/memo/:txt_name' do |t|
   @txt_name = t
+  File.open("#{@txt_name}", "r") do |f|
+    @memo_date = f.read.split(",")
+  end
   erb :show
 end
 
-delete '/show-:txt_name' do |t|
+delete '/memo/:txt_name' do |t|
   File.delete(t.to_s)
-  redirect to('/')
+  redirect to('/memo')
 end
 
-get '/edit-:txt_name' do |t|
+get '/memo/custom/:txt_name' do |t|
   @txt_name = t
-  File.open(t.to_s, 'r') do |f|
+  File.open("#{@txt_name}", "r") do |f|
     @memo_date = f.read.split(',')
   end
   erb :edit
 end
 
-patch '/edit-:txt_name' do |t|
+patch '/memo/custom/:txt_name' do |t|
   @txt_name = t
   File.open(@txt_name.to_s, 'w') do |f|
     f.puts("#{params[:edit_title]},#{params[:edit_content]}")
   end
   File.rename(@txt_name.to_s, "#{params[:edit_title]}.txt")
-  redirect to('/')
+  redirect to('/memo')
 end
