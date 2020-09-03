@@ -20,17 +20,15 @@ end
 post '/memo/new' do
   @memo_title = params[:memo_title]
   @memo_content = params[:memo_content]
-  @memo.map do |f|
-    txt_name = f.gsub(/\.txt/, "")
-    if txt_name == @memo_title
-      redirect to('/memo/new')
-    else
-      File.open("#{@memo_title}.txt", 'w') do |f|
-        f.puts("#{@memo_title},#{@memo_content}")
-      end
+  @memo << "#{@memo_title}.txt"
+  if @memo.count("#{@memo_title}.txt") == 1
+    File.open("#{@memo_title}.txt", 'w') do |f|
+      f.puts("#{@memo_title},#{@memo_content}")
     end
+    erb :save
+  else
+    redirect to('/memo/new')
   end
-  erb :save
 end
 
 get '/memo/:txt_name' do |t|
