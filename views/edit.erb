@@ -2,7 +2,7 @@
   <input type="hidden" name="_method" value="patch">
   <p></p>
   <h2>タイトルを入力</h2>
-  <input type="text" name="edit_title" value="<%= Rack::Utils.escape_html(" #{@memo_date[0]} ") %>" required>
+  <input type="text" name="edit_title" value="<%= Rack::Utils.escape_html("#{@memo_date[0]}") %>" required>
   <h2>本文を入力</h2>
   <textarea class="memo_content" name="edit_content"><%= Rack::Utils.escape_html("#{@memo_date[1]}") %></textarea>
   <p></p>

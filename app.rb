@@ -20,8 +20,15 @@ end
 post '/create' do
   @memo_title = params[:memo_title]
   @memo_content = params[:memo_content]
-  File.open("#{@memo_title}.txt", 'w') do |f|
-    f.puts("#{@memo_title},#{@memo_content}")
+  @memo.map do |f|
+    txt_name = f.gsub(/\.txt/, "")
+    if txt_name == @memo_title
+      redirect to('/create')
+    else
+      File.open("#{@memo_title}.txt", 'w') do |f|
+        f.puts("#{@memo_title},#{@memo_content}")
+      end
+    end
   end
   erb :save
 end

@@ -1,1 +1,1 @@
-sample1,メモ1
+sample1,memo1

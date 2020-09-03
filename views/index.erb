@@ -2,7 +2,7 @@
   <ul style="padding: 0px;">
     <% @memo.sort.each do |txt| %>
       <li class="memo_titles">
-        <a href="/show-<%= "#{txt}" %>">
+        <a href="/show-<%= txt %>">
           <%= Rack::Utils.escape_html(txt.gsub(/\.txt/, "")) %>
         </a>
       </li>
