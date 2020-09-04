@@ -1,10 +1,10 @@
 <h2>タイトル</h2>
 <p class="title_view">
-  <%= @memo_date[0] %>
+  <%= @memo_data[0] %>
 </p>
 <h2>本文</h2>
 <p class="content_view">
-  <%= @memo_date[1] %>
+  <%= @memo_data[1] %>
 </p>
 
 <form action="/memo/custom/<%= "#{@txt_name}" %>" method="get">
