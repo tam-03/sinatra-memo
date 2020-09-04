@@ -17,7 +17,7 @@ get '/memo/new' do
   erb :create
 end
 
-post '/memo/new' do
+post '/memo' do
   @memo_title = params[:memo_title]
   @memo_content = params[:memo_content]
   @memo << "#{@memo_title}.txt"
@@ -52,7 +52,7 @@ get '/memo/custom/:txt_name' do |t|
   erb :edit
 end
 
-patch '/memo/custom/:txt_name' do |t|
+patch '/memo/:txt_name' do |t|
   @txt_name = t
   File.open(@txt_name.to_s, 'w') do |f|
     f.puts("#{params[:edit_title]},#{params[:edit_content]}")
