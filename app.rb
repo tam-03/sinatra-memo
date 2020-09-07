@@ -3,6 +3,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require 'fileutils'
+require 'pg'
 enable :method_override
 
 before do
