@@ -7,10 +7,11 @@ require 'pg'
 enable :method_override
 
 before do
-  @memo = Dir.glob('*').grep(/.txt/).map { |t| t }
+  @connection = PG::connect(:host => "localhost", :user => "tamuratakumi", :password => "takumi", :dbname => "memoapp", :port => "5432")
 end
 
 get '/memo' do
+  @result = @connection.exec("SELECT title from memo;")
   erb :index
 end
 
