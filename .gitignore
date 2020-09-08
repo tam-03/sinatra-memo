@@ -2,3 +2,5 @@ vendor/bundle
 rubybook
 Gemfile
 .bundle/config
+memo.sql
+dbsample.rb
