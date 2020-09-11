@@ -27,7 +27,7 @@ post '/memo' do
 end
 
 get '/memo/:memo_title' do |memo_title|
-  @result = @connection.exec("SELECT title, body from memo where title = $1",[memo_title])
+  @single_memo = @connection.exec("SELECT title, body from memo where title = $1",[memo_title])
   erb :show
 end
 
