@@ -1,9 +1,9 @@
 <div class="top">
   <ul style="padding: 0px;">
-    <% @result.each do |tuple| %>
+    <% @memo_title_all.each do |title| %>
       <li class="memo_titles">
-        <a href="/memo/<%= tuple['title'] %>">
-          <%= Rack::Utils.escape_html(tuple['title']) %>
+        <a href="/memo/<%= title['title'] %>">
+          <%= Rack::Utils.escape_html(title['title']) %>
         </a>
       </li>
       <% end %>
