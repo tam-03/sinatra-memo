@@ -2,4 +2,3 @@ vendor/bundle
 rubybook
 Gemfile
 .bundle/config
-dbsample.rb
