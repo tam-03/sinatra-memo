@@ -22,7 +22,7 @@ end
 post '/memo' do
   @memo_title = params[:memo_title]
   @memo_body = params[:memo_body]
-  @result = @connection.exec("insert into memo (title, body) values ($1,$2)",[@memo_title, @memo_body])
+  @new_memo = @connection.exec("insert into memo (title, body) values ($1,$2)",[@memo_title, @memo_body])
   erb :save
 end
 
