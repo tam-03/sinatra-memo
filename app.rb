@@ -7,7 +7,7 @@ require 'pg'
 enable :method_override
 
 before do
-  @connection = PG::connect(:host => "localhost", :user => "tamuratakumi", :password => "takumi", :dbname => "memoapp", :port => "5432")
+  @connection = PG::connect(:host => "localhost", :dbname => "memoapp", :port => "5432")
 end
 
 get '/memo' do
