@@ -44,6 +44,6 @@ end
 patch '/memo/:memo_title' do |memo_title|
   edit_title = params[:edit_title]
   edit_body = params[:edit_body]
-  @result = @connection.exec("update memo set title = $1, body = $2 where title = $3",[edit_title, edit_body, memo_title])
+  @edit_memo = @connection.exec("update memo set title = $1, body = $2 where title = $3",[edit_title, edit_body, memo_title])
   redirect to('/memo')
 end
