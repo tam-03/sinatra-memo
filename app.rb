@@ -11,7 +11,7 @@ before do
 end
 
 get '/memo' do
-  @memo_title_all = @connection.exec("SELECT title from memo;")
+  @memo_titles = @connection.exec("SELECT title from memo;")
   erb :index
 end
 
