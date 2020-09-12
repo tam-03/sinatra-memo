@@ -32,7 +32,7 @@ get '/memo/:memo_title' do |memo_title|
 end
 
 delete '/memo/:memo_title' do |memo_title|
-  @delete_memo = @connection.exec("DELETE from memo where title = $1",[memo_title])
+  @connection.exec("DELETE from memo where title = $1",[memo_title])
   redirect to('/memo')
 end
 
