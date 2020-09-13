@@ -1,17 +1,18 @@
+<% @single_memo.each do |memo| %>
 <h2>タイトル</h2>
 <p class="title_view">
-  <%= @memo_data[0] %>
+  <%= memo['title'] %>
 </p>
 <h2>本文</h2>
 <p class="content_view">
-  <%= @memo_data[1] %>
+  <%= memo['body'] %>
 </p>
-
-<form action="/memo/custom/<%= "#{@txt_name}" %>" method="get">
+<form action="/memo/custom/<%= memo['title'] %>" method="get">
   <input class="btn-flat-border" type="submit" value="変更">
 </form>
 <p></p>
-<form action="/memo/<%= "#{@txt_name}" %>" method="post">
+<form action="/memo/<%= memo['title'] %>" method="post">
   <input type="hidden" name="_method" value="delete">
   <input class="btn-flat-border" type="submit" value="削除">
 </form>
+<% end %>

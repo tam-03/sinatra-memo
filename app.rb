@@ -7,10 +7,11 @@ require 'pg'
 enable :method_override
 
 before do
-  @memo = Dir.glob('*').grep(/.txt/).map { |t| t }
+  @connection = PG::connect(:host => "localhost", :dbname => "memoapp", :port => "5432")
 end
 
 get '/memo' do
+  @memo_titles = @connection.exec("SELECT title from memo;")
   erb :index
 end
 
@@ -20,44 +21,29 @@ end
 
 post '/memo' do
   @memo_title = params[:memo_title]
-  @memo_content = params[:memo_content]
-  @memo << "#{@memo_title}.txt"
-  if @memo.count("#{@memo_title}.txt") == 1
-    File.open("#{@memo_title}.txt", 'w') do |f|
-      f.puts("#{@memo_title},#{@memo_content}")
-    end
-    erb :save
-  else
-    redirect to('/memo/new')
-  end
+  @memo_body = params[:memo_body]
+  @new_memo = @connection.exec("insert into memo (title, body) values ($1,$2)",[@memo_title, @memo_body])
+  erb :save
 end
 
-get '/memo/:txt_name' do |t|
-  @txt_name = t
-  File.open(@txt_name.to_s, 'r') do |f|
-    @memo_data = f.read.split(',')
-  end
+get '/memo/:memo_title' do |memo_title|
+  @single_memo = @connection.exec("SELECT title, body from memo where title = $1",[memo_title])
   erb :show
 end
 
-delete '/memo/:txt_name' do |t|
-  File.delete(t.to_s)
+delete '/memo/:memo_title' do |memo_title|
+  @connection.exec("DELETE from memo where title = $1",[memo_title])
   redirect to('/memo')
 end
 
-get '/memo/custom/:txt_name' do |t|
-  @txt_name = t
-  File.open(@txt_name.to_s, 'r') do |f|
-    @memo_data = f.read.split(',')
-  end
+get '/memo/custom/:memo_title' do |memo_title|
+  @result = @connection.exec("SELECT title, body from memo where title = $1",[memo_title])
   erb :edit
 end
 
-patch '/memo/:txt_name' do |t|
-  @txt_name = t
-  File.open(@txt_name.to_s, 'w') do |f|
-    f.puts("#{params[:edit_title]},#{params[:edit_content]}")
-  end
-  File.rename(@txt_name.to_s, "#{params[:edit_title]}.txt")
+patch '/memo/:memo_title' do |memo_title|
+  edit_title = params[:edit_title]
+  edit_body = params[:edit_body]
+  @edit_memo = @connection.exec("update memo set title = $1, body = $2 where title = $3",[edit_title, edit_body, memo_title])
   redirect to('/memo')
 end

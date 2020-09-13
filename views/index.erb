@@ -1,9 +1,9 @@
 <div class="top">
   <ul style="padding: 0px;">
-    <% @memo.sort.each do |txt| %>
+    <% @memo_titles.each do |title| %>
       <li class="memo_titles">
-        <a href="/memo/<%= "#{txt}" %>">
-          <%= Rack::Utils.escape_html(txt.gsub(/\.txt/, "")) %>
+        <a href="/memo/<%= title['title'] %>">
+          <%= Rack::Utils.escape_html(title['title']) %>
         </a>
       </li>
       <% end %>
